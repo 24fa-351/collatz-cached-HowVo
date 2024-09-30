@@ -44,20 +44,12 @@ void enqueue(FIFOCache *cache, int key)
         }
         cache->cacheMap[cache->capacity - 1].key = key;
         cache->cacheMap[cache->capacity - 1].val = collatzCore(key);
-        cache->size++;
     }
 
-    // If not then shift every elements to the left(front) and add to the rear of the list
-    else
-    {
-        for (int i = cache->size; i > 0; i--)
-        {
-            cache->cacheMap[i - 1] = cache->cacheMap[i];
-        }
-        cache->cacheMap[cache->size + 1].key = key;
-        cache->cacheMap[cache->size + 1].val = collatzCore(key);
-        cache->size++;
-    }
+    // If not then add to the rear of the list
+    cache->cacheMap[cache->size + 1].key = key;
+    cache->cacheMap[cache->size + 1].val = collatzCore(key);
+    cache->size++;
 }
 
 int getFIFO(FIFOCache *cache, int key)

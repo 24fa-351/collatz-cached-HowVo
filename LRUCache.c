@@ -63,7 +63,6 @@ void putLRU(LRUCache *cache, int key)
         }
         cache->cacheMap[0].key = key;
         cache->cacheMap[0].val = collatzCore(key);
-        cache->size++;
     }
 
     // If not then shift every elements to the right(tail) and add to the head of the list

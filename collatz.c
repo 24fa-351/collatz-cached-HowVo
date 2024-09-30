@@ -45,6 +45,7 @@ int main(int argc, char **argv)
         {
             int randomNumber = rand() % (max - min + 1) + min;
             int steps = getFIFO(cache, randomNumber);
+            printf("The random number is %d and it takes %d steps until it results in 1 \n", randomNumber, steps);
 
             if (steps == -1)
             {
